@@ -1,0 +1,10 @@
+[Unit]
+Description=Junior Design Robot Daemon
+After=network.target
+
+[Service]
+ExecStart=python /home/Documents/Junior-Design-2A/Projects/Wonderland/demo_robot.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

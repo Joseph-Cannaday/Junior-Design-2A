@@ -4,9 +4,9 @@ import selectors
 import subprocess
 
 def get_ipv4():
-  output = subprocess.check_output(["hostname", "-I"])
+  output = subprocess.check_output(["hostname", "-i"])
   output = output.decode('utf-8')
-  ip4, ip6, nextLine = output.split(' ')
+  ip4, ip6= output.split(' ')
   return ip4
 
 def create_request(name, value, listening_port):
