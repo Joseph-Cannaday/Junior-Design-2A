@@ -17,7 +17,8 @@ PORT = 65432
 LISTEN_PORT = 65433
 
 if __name__ == "__main__":
-  print('Register with director...')
+  while 1:
+    print('Register with director...')
 
   registration_request = create_request(ROBOT_NAME, "Register", LISTEN_PORT) 
   initiate_connection(HOST, PORT, registration_request, libclient)
