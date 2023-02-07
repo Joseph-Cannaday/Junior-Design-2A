@@ -11,7 +11,7 @@ from Protocol import libclient
 from Utils.robotUtils import create_request, listen_for_director, start_connection, initiate_connection
 
 ROBOT_NAME = "Robot1"
-HOST = "128.61.65.65"
+HOST = "127.0.0.1"
 PORT = 65432 
 
 LISTEN_PORT = 65433

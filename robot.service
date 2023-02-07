@@ -3,7 +3,7 @@ Description=Junior Design Robot Daemon
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python /home/doc/Documents/Junior-Design-2A/Projects/Wonderland/demo_robot.py
+ExecStart=/usr/bin/python /home/pi/Documents/Junior-Design-2A/demo_robot.py
 Restart=on-failure
 
 [Install]

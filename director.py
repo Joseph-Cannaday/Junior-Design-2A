@@ -14,7 +14,7 @@ from Utils.robotUtils import get_ipv4
 
 import csv
 
-HOST = get_ipv4()  # Standard loopback interface address (localhost). When in production, it should match the assigned IP Addr.
+HOST = 127.0.0.1#get_ipv4()  # Standard loopback interface address (localhost). When in production, it should match the assigned IP Addr.
 PORT = 65432  # Port to listen on (non-privileged ports are > 1023). Make sure this port is open
 
 def create_request(action, value):
