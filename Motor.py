@@ -126,7 +126,8 @@ class Motor:
         servo3.set_PWM_dutycycle(19, 0)
         servo3.set_PWM_dutycycle(19, 0)
 
-#Driver code
-motor = Motor()
-motor.testMotors()
-motor.flapWings()
+if __name__ == '__main__':
+    #Driver code
+    motor = Motor()
+    motor.testMotors()
+    motor.flapWings()

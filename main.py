@@ -10,7 +10,25 @@ def doTest():
     return
 
 def startPlay():
-    return
+    led = Light()
+    wings = Motor()
+    spkr = Speaker()
+    while 1:
+        # TODO connection object
+        #wait for line
+        # when line received:
+            led.toggle()
+            spkr.sayLine()
+            wings.flapWings()
+
+def readSwitch():
+    #do something
+    return state
 
 if __name__ == "__main__":
-
+    #initialize switch and read status
+    switch_pos = 1
+    if switch_pos==1:
+        doTest()
+    else:
+        startPlay()

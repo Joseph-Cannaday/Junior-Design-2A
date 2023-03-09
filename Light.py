@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import pigpio
 
+LED_PIN = 17
 class Light:
     def __init__(self, name = "snapdragon_LED"):
         self.name = name
@@ -35,5 +36,6 @@ class Light:
         GPIO.output(ledPin, GPIO.LOW)
         return
 
-led = Light()
-led.testLed(17)
+if __name__ == '__main__':
+    led = Light()
+    led.testLed(LED_PIN)

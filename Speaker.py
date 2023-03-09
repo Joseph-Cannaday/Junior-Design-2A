@@ -23,9 +23,10 @@ class Speaker:
         subprocess.call(sys_cmd, shell = True)
         return
 
-speaker = Speaker()
-speaker.testSpeaker('StarWars60.wav')
-speaker.sayLine('StarWars60.wav')
+if __name__ == '__main__':
+    speaker = Speaker()
+    speaker.testSpeaker('StarWars60.wav')
+    speaker.sayLine('StarWars60.wav')
 
 
 
