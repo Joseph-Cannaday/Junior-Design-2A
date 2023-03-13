@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# Sharon Chu, Joseph Cannaday
+# Junior Design 2023
 import subprocess
 import os.path
 
