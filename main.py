@@ -6,6 +6,7 @@ import Motor
 import Light
 import Speaker
 import time
+import socket
 
 def doTest():
     led = Light.Light()
