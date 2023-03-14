@@ -35,5 +35,5 @@ class Light:
 
 if __name__ == '__main__':
     LED_PIN = 14
-    led = Light()
-    led.testLed(LED_PIN)
+    led = Light(ledPin=LED_PIN)
+    led.testLed()
