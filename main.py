@@ -9,16 +9,18 @@ import time
 import socket
 
 def doTest():
-    led = Light.Light()
+    led = Light.Light(ledPin=14)
     wings = Motor.Motor()
     spkr = Speaker.Speaker()
-    return
+    wings.testMotors()
+    led.testLed()
 
 def startPlay():
     DIRECTOR_HOST = "107.23.238.206"
     DIRECTOR_PORT = 3336
+    LED_PIN = 14
     # declare robot components
-    led = Light.Light()
+    led = Light.Light(ledPin=LED_PIN)
     wings = Motor.Motor()
     spkr = Speaker.Speaker()
     c1 = Connect.Connect()

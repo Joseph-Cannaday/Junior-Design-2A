@@ -3,40 +3,45 @@
 # Junior Design 2023
 import RPi.GPIO as GPIO
 import pigpio
+import time
 
-LED_PIN = 17
+LED_PIN = 14
 class Light:
-    def __init__(self, name = "snapdragon_LED"):
+    def __init__(self, ledPin=14, name = "snapdragon_LED"):
         self.name = name
-        return
+        self.ledPin = ledPin
 
-    def testLed(self, ledPin):
+    def testLed(self):
         error = 0
         GPIO.setmode(GPIO.BCM)
-        GPIO.setup(ledPin, GPIO.OUT)
-        GPIO.output(ledPin, GPIO.LOW)
-        GPIO.setup(ledPin, GPIO.IN)
-        if (GPIO.input(ledPin) == 0):
-            error = 0
-        else:
-            error = 1
+        GPIO.setup(self.ledPin, GPIO.OUT)
+        GPIO.output(self.ledPin, GPIO.LOW)
+        #GPIO.setup(self.ledPin, GPIO.IN)
+        #if (GPIO.input(self.ledPin) == 0):
+        #    error = 0
+        #else:
+        #    error = 1
+
+        print("Light on")
+        time.sleep(10)
+        print("Light off")
 
         GPIO.setmode(GPIO.BCM)
-        GPIO.setup(ledPin, GPIO.OUT)
-        GPIO.output(ledPin, GPIO.HIGH)
-        GPIO.setup(ledPin, GPIO.IN)
-        if (GPIO.input(ledPin) == 1):
-            error = 0
-        else:
-            error = 1
+        GPIO.setup(self.ledPin, GPIO.OUT)
+        GPIO.output(self.ledPin, GPIO.HIGH)
+        #GPIO.setup(self.ledPin, GPIO.IN)
+        #if (GPIO.input(self.ledPin) == 1):
+        #    error = 0
+        #else:
+        #    error = 1
         print("LED Error: " + str(error))
         return
 
-    def doLed(self, ledPin):
+    def doLed(self):
         GPIO.setmode(GPIO.BCM)
-        GPIO.setup(ledPin, GPIO.OUT)
+        GPIO.setup(self.ledPin, GPIO.OUT)
         # set ledPin to low to activate
-        GPIO.output(ledPin, GPIO.LOW)
+        GPIO.output(self.ledPin, GPIO.LOW)
         return
 
 if __name__ == '__main__':
