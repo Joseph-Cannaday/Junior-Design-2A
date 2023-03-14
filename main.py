@@ -14,6 +14,8 @@ def doTest():
     return
 
 def startPlay():
+    DIRECTOR_HOST = "107.23.238.206"
+    DIRECTOR_PORT = 3336
     # declare robot components
     led = Light.Light()
     wings = Motor.Motor()
