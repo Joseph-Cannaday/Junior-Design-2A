@@ -7,6 +7,7 @@ import Light
 import Speaker
 import time
 import socket
+import RPi.GPIO as GPIO
 
 def doTest():
     led = Light.Light(ledPin=14)
@@ -46,8 +47,10 @@ def startPlay():
             c1.s.close()
 
 def readSwitch():
-    #do something
-    state = 1
+    switch_pin = 24# GPIO 24, pin 18
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(switch_pin, GPIO.IN)
+    state = GPIO.input(switch_pin)
     return state
 
 if __name__ == "__main__":
