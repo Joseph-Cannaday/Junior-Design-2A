@@ -16,14 +16,14 @@ ROBOT_ID = 'Snapdragonfly'
 class Connect:
   def __init__(self):
     self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # TCP + IPv4
-    self.self.status = 'CONNECTING'  # System self.status (CONNECTING, CONNECTED, RUNNING, FAILED)
+    self.status = 'CONNECTING'  # System self.status (CONNECTING, CONNECTED, RUNNING, FAILED)
 
   # Perform initial connection and identification procedure
   def connect(self, host, port):
     self.s.connect((host, port))
 
     # Perform identification procedure
-    message = encode_json({ "cmd": "IDENTIFY", "data": ROBOT_ID })
+    message = self.encode_json({ "cmd": "IDENTIFY", "data": ROBOT_ID })
     self.s.send(message)
     
     # Verify identification was successful
@@ -31,10 +31,10 @@ class Connect:
     if (callback['cmd'] == 'IDENTIFY' and callback['data'] == True):
       print("[CLIENT] Connection successful")
       self.status = 'CONNECTED'
-    
-    # Identification was unsuccessful
-    print("[CLIENT] Connection failed:", callback['data'])
-    self.status = 'FAILED'
+    else:
+      # Identification was unsuccessful
+      print("[CLIENT] Connection failed:", callback['data'])
+      self.status = 'FAILED'
 
   # Central message decoder. Decodes the JSON message and performs actions
   # based on the message.
@@ -73,11 +73,12 @@ class Connect:
 if __name__ == '__main__':
     c1 = Connect()
     c1.connect(DIRECTOR_HOST, DIRECTOR_PORT)
-    
-    if (c1.status != 'CONNECTED'): return print("Failed connection, exiting")
+    print(c1.status)
+    if (c1.status != 'CONNECTED'): print("Failed connection, exiting")
     try:
       while True:
-        c1.decode_message(c1.s.recv(1024).decode())
+        command = c1.decode_message(c1.s.recv(1024).decode())
+        print(f"[CLIENT] Got a line: {command}")
     except socket.error:
       print("[CLIENT] Failed...", )
       c1.s.close()
