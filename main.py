@@ -34,13 +34,13 @@ def startPlay():
                 # program will hang on c1.s.recv until it receives the next line
                 if command:
                     print(f"[CLIENT] Got a line: {command}")
-                    led.set_low()
+                    led.setLow()
                     sleeptime = spkr.sayLine('command')# return the amount of time the speaker will take to play the line (in seconds)
                     wings.flapWings()
                     time.sleep(sleeptime)# sleep for as long as speaker needs to finish lines
                     c1.s.send(c1.encode_json({ "cmd": "LINE_COMPLETE" }))
                     #make sure pwm/led deactivates
-                    led.set_high()
+                    led.setHigh()
         except socket.error:
             print("[CLIENT] Failed...", )
             c1.s.close()
@@ -52,8 +52,12 @@ def readSwitch():
 
 if __name__ == "__main__":
     #initialize switch and read status
-    switch_pos = readSwitch()
-    if switch_pos == 0:
-        doTest()
-    else:
-        startPlay()
+    while 1:
+        try:
+            switch_pos = readSwitch()
+            if switch_pos == 0:
+                doTest()
+            else:
+                startPlay()
+        except:
+            print('[Error] Ending Process')
