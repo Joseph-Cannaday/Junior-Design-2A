@@ -8,14 +8,17 @@ import Speaker
 import time
 
 def doTest():
+    led = Light.Light()
+    wings = Motor.Motor()
+    spkr = Speaker.Speaker()
     return
 
 def startPlay():
     # declare robot components
-    led = Light()
-    wings = Motor()
-    spkr = Speaker()
-    c1 = c1 = Connect()
+    led = Light.Light()
+    wings = Motor.Motor()
+    spkr = Speaker.Speaker()
+    c1 = Connect.Connect()
     while 1:
         c1.connect(DIRECTOR_HOST, DIRECTOR_PORT)
     
