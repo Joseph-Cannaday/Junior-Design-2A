@@ -36,7 +36,7 @@ def startPlay():
                 if command:
                     print(f"[CLIENT] Got a line: {command}")
                     led.setLow()
-                    sleeptime = spkr.sayLine('command')# return the amount of time the speaker will take to play the line (in seconds)
+                    sleeptime = spkr.sayLine(command)# return the amount of time the speaker will take to play the line (in seconds)
                     wings.flapWings()
                     time.sleep(sleeptime)# sleep for as long as speaker needs to finish lines
                     c1.s.send(c1.encode_json({ "cmd": "LINE_COMPLETE" }))
