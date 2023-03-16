@@ -57,8 +57,7 @@ if __name__ == "__main__":
     #initialize switch and read status
     while 1:
         try:
-            switch_pos = readSwitch()
-            if switch_pos == 0:
+            if not readSwitch():
                 doTest()
             else:
                 startPlay()
