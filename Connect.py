@@ -48,7 +48,7 @@ class Connect:
     # Server signal that the presentation is complete
     elif payload['cmd'] == 'PRESENTATION_COMPLETE':
       print("[CLIENT] Presentation is complete")
-      return ''
+      return 'done'
       
     # All lines for a given robot. Given by the server during initial connection
     # when running in echo mode
@@ -78,7 +78,10 @@ if __name__ == '__main__':
     try:
       while True:
         command = c1.decode_message(c1.s.recv(1024).decode())
+        if command == 'done': break
         print(f"[CLIENT] Got a line: {command}")
+        time.sleep(1)
+        c1.s.send(c1.encode_json({ "cmd": "LINE_COMPLETE" }))
     except socket.error:
       print("[CLIENT] Failed...", )
       c1.s.close()

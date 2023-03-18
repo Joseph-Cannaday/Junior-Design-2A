@@ -34,6 +34,7 @@ def startPlay():
                 command = c1.decode_message(c1.s.recv(1024).decode())# return command for line, else return ''
                 # program will hang on c1.s.recv until it receives the next line
                 if command:
+                    if command == 'done': break
                     print(f"[CLIENT] Got a line: {command}")
                     led.setLow()
                     runtime = 2
