@@ -59,8 +59,9 @@ def readSwitch():
 if __name__ == "__main__":
     #initialize switch and read status
     while 1:
+        time.sleep(3)
         try:
-            if not readSwitch():
+            if readSwitch():
                 doTest()
             else:
                 startPlay()
